@@ -7,10 +7,11 @@ st.set_page_config(page_title="ML App", layout="centered")
 
 @st.cache_resource
 def load_model():
-    model_path = os.path.join(os.path.dirname(__file__), "model.pkl")
+    base_dir = os.path.dirname(__file__)
+    model_path = os.path.join(base_dir, "..", "model.pkl")
 
     if not os.path.exists(model_path):
-        st.error("❌ model.pkl file not found. Please upload it to GitHub.")
+        st.error(f"❌ model.pkl not found at {model_path}")
         st.stop()
 
     with open(model_path, "rb") as f:
