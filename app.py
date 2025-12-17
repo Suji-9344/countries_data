@@ -1,7 +1,3 @@
-import os
-st.write("Files:", os.listdir())
-
-
 import streamlit as st
 import pickle
 import os
