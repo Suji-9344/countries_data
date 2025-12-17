@@ -37,3 +37,14 @@ f2 = st.number_input("Feature 2")
 if st.button("Predict"):
     result = model.predict([[f1, f2]])
     st.success(f"Prediction: {result[0]}")
+    import streamlit as st
+import pickle
+import pandas as pd
+
+st.title("Countries Clustered Data")
+
+with open("countries_clustered.pkl", "rb") as f:
+    data = pickle.load(f)
+
+st.success("PKL file loaded successfully ✅")
+st.dataframe(data)
