@@ -1,29 +1,15 @@
 import streamlit as st
-import pickle
-import os
-import numpy as np
 
-st.set_page_config(page_title="ML App", layout="centered")
+st.title('Country Clustering Dashboard')
+import pandas as pd
 
-@st.cache_resource
-def load_model():
-    base_dir = os.path.dirname(__file__)
-    model_path = os.path.join(base_dir, "..", "model.pkl")
+df = pd.read_csv('/content/countries_clustered.csv')
+st.subheader('Clustered Countries Data')
+st.dataframe(df)
 
-    if not os.path.exists(model_path):
-        st.error(f"❌ model.pkl not found at {model_path}")
-        st.stop()
+st.subheader('Summary Statistics')
+st.write(df.describe())
 
-    with open(model_path, "rb") as f:
-        return pickle.load(f)
-
-model = load_model()
-
-st.title("🤖 Prediction App")
-
-f1 = st.number_input("Feature 1")
-f2 = st.number_input("Feature 2")
-
-if st.button("Predict"):
-    result = model.predict([[f1, f2]])
-    st.success(f"Prediction: {result[0]}")
+st.subheader('Cluster Distribution')
+cluster_counts = df['Cluster'].value_counts()
+st.bar_chart(cluster_counts)
