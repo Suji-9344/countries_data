@@ -1,23 +1,33 @@
 import streamlit as st
 import pickle
+import os
 import numpy as np
+
+st.set_page_config(page_title="ML App", layout="centered")
 
 # ---------- LOAD MODEL ----------
 @st.cache_resource
 def load_model():
-    with open("model.pkl", "rb") as f:
-        return pickle.load(f)
+    model_path = os.path.join(os.path.dirname(__file__), "model.pkl")
+
+    if not os.path.exists(model_path):
+        st.error("❌ model.pkl file not found. Please upload it to GitHub.")
+        st.stop()
+
+    with open(model_path, "rb") as f:
+        model = pickle.load(f)
+    return model
 
 model = load_model()
 
-st.set_page_config(page_title="ML Prediction App", layout="centered")
-st.title("🤖 Machine Learning Prediction")
+# ---------- UI ----------
+st.title("🤖 Prediction App")
 
-# Example inputs (change based on your dataset)
-feature1 = st.number_input("Feature 1")
-feature2 = st.number_input("Feature 2")
+f1 = st.number_input("Feature 1")
+f2 = st.number_input("Feature 2")
 
 if st.button("Predict"):
-    data = np.array([[feature1, feature2]])
-    result = model.predict(data)
-    st.success(f"Prediction: {result[0]}")
+    data = np.array([[f1, f2]])
+    prediction = model.predict(data)
+    st.success(f"Prediction: {prediction[0]}")
+
