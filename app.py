@@ -3,25 +3,63 @@ import pandas as pd
 from sklearn.preprocessing import StandardScaler
 from scipy.cluster.hierarchy import linkage, fcluster
 
-st.set_page_config(page_title="Countries Hierarchical Clustering", layout="centered")
-st.title("🌍 Hierarchical Clustering of Countries (No Plot)")
+st.set_page_config(page_title="Interactive Hierarchical Clustering", layout="centered")
+st.title("🌍 Interactive Hierarchical Clustering of Countries (No Plot)")
 
-st.write("This app performs hierarchical clustering on a default countries dataset without plotting dendrograms.")
+st.write("Enter country names and numeric values for clustering.")
 
-# ------------------- DEFAULT DATASET -------------------
-data = {
-    "Country": ["India", "USA", "China", "UK", "Japan", "Germany", "Brazil", "Australia", "Canada", "Russia"],
-    "GDP": [2200, 65000, 12000, 43000, 42000, 46000, 9000, 54000, 48000, 11000],
-    "LifeExpectancy": [70.8, 79.1, 76.5, 80.5, 84.6, 81.2, 75.5, 82.8, 82.3, 72.6],
-    "Population": [1400000000, 331000000, 1440000000, 68000000, 125000000, 83000000, 212000000, 25000000, 38000000, 146000000],
-    "HDI": [0.63, 0.92, 0.74, 0.90, 0.91, 0.94, 0.76, 0.94, 0.93, 0.82]
-}
+# ------------------- USER INPUT -------------------
+st.subheader("Add Country Data")
 
-df = pd.DataFrame(data)
+# Initialize empty list to store countries
+if "countries_data" not in st.session_state:
+    st.session_state.countries_data = []
 
-# ------------------- SHOW DATASET ON DEMAND -------------------
-if st.button("📊 Show Dataset"):
-    st.subheader("Default Countries Dataset")
+with st.form("country_form", clear_on_submit=True):
+    country_name = st.text_input("Country Name")
+    gdp = st.number_input("GDP (in USD)", min_value=0.0, value=0.0)
+    life_exp = st.number_input("Life Expectancy (years)", min_value=0.0, value=70.0)
+    population = st.number_input("Population", min_value=0, value=1000000)
+    hdi = st.number_input("HDI (0-1)", min_value=0.0, max_value=1.0, value=0.7, step=0.01)
+    
+    submitted = st.form_submit_button("Add Country")
+    
+    if submitted:
+        st.session_state.countries_data.append({
+            "Country": country_name,
+            "GDP": gdp,
+            "LifeExpectancy": life_exp,
+            "Population": population,
+            "HDI": hdi
+        })
+        st.success(f"✅ {country_name} added to dataset.")
+
+# ------------------- SHOW CURRENT DATA -------------------
+if st.session_state.countries_data:
+    st.subheader("Current Dataset")
+    df = pd.DataFrame(st.session_state.countries_data)
+    st.dataframe(df)
+    
+    # ------------------- CLUSTERING -------------------
+    numeric_cols = ["GDP", "LifeExpectancy", "Population", "HDI"]
+    X = df[numeric_cols]
+
+    # Scale features
+    scaler = StandardScaler()
+    X_scaled = scaler.fit_transform(X)
+
+    # Perform hierarchical clustering
+    Z = linkage(X_scaled, method='ward')
+
+    # Select number of clusters
+    n_clusters = st.slider("Select number of clusters", 2, 10, 3)
+
+    # Assign cluster labels
+    df['Cluster'] = fcluster(Z, n_clusters, criterion='maxclust')
+
+    st.subheader("📊 Countries with Cluster Labels")
     st.dataframe(df)
 
-# ----------
+    # Download option
+    csv = df.to_csv(index=False).encode('utf-8')
+    st.download_button("⬇️ Download Clustered CSV", data=csv, file_name="countries_clustered.csv", mime="text/csv")
