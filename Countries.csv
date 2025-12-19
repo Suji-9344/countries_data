@@ -1,0 +1,211 @@
+Country,Continent,AvgAltitude,Population
+Afghanistan,Oceania,4152,1090065285
+Albania,South America,1302,1278752355
+Algeria,Asia,213,808383780
+Andorra,Asia,3702,1056370742
+Angola,Africa,2860,1432570580
+Antigua and Barbuda,Asia,3135,319591851
+Argentina,Asia,3337,1042073816
+Armenia,Europe,4835,752856932
+Australia,Africa,4493,1458158410
+Austria,North America,4929,989268146
+Azerbaijan,Asia,2429,1239223375
+Bahamas,Asia,513,681898708
+Bahrain,North America,1784,1194848400
+Bangladesh,Asia,576,1160526715
+Barbados,South America,4937,408046207
+Belarus,Asia,2678,1171552172
+Belgium,Asia,2151,494313195
+Belize,Oceania,4832,840107952
+Benin,Europe,3778,592763799
+Bhutan,South America,1957,792878412
+Bolivia,Oceania,1947,1045264346
+Bosnia and Herzegovina,Oceania,677,961073860
+Botswana,South America,1876,1467403224
+Brazil,Oceania,2280,197945503
+Brunei Darussalam,South America,1628,165270055
+Bulgaria,Asia,4040,572635508
+Burkina Faso,Europe,4900,345832280
+Burundi,Europe,152,64296616
+Madagascar,Africa,2244,1459022300
+Cape Verde,Asia,2688,747181722
+Cambodia,Asia,2940,221931857
+Cameroon,Asia,1097,1430797786
+Canada,North America,2125,122861660
+Central African Republic,North America,3055,710701539
+Chad,Africa,3423,844074936
+Chile,South America,29,1350428102
+China,Africa,30,1077092968
+Comoros,Asia,1182,491009240
+Congo,Oceania,3981,35715197
+Costa Rica,South America,879,1423339719
+Croatia,North America,383,987101052
+Cuba,Europe,3955,278192092
+Cyprus,Europe,1845,453464874
+Czech Republic,Africa,179,588490213
+Democratic Republic of Congo,North America,676,975227934
+Denmark,South America,666,710389247
+Djibouti,Africa,2328,1298277516
+Dominica,North America,2795,678576230
+Dominican Republic,Africa,2080,1447061742
+Ecuador,South America,3814,776206390
+Egypt,Oceania,2905,537456510
+El Salvador,Africa,941,781785285
+Equatorial Guinea,North America,4986,751713083
+Eritrea,Europe,1687,264480893
+Estonia,North America,4243,1308485438
+Swaziland,Oceania,4813,1144222253
+Ethiopia,Asia,3836,1174976801
+Fiji Islands,Africa,4735,210343328
+Finland,South America,4911,1141295059
+France,North America,3857,1152642551
+Gabon,South America,2385,450060724
+Gambia,North America,4119,649185937
+Georgia,Asia,2838,306432777
+Germany,Oceania,4994,867814513
+Ghana,Europe,658,306317046
+Greece,Europe,4275,951155372
+Grenada,North America,1455,137868199
+Guatemala,Asia,2590,389069653
+Guinea,Asia,1162,233425903
+Guinea-Bissau,South America,2705,1272377420
+Guyana,South America,3127,548998432
+Haiti,Africa,4758,1485070284
+Vatican City,South America,4306,1369625649
+Honduras,North America,3364,1355599752
+Hungary,Africa,1797,352611095
+Iceland,North America,810,395173599
+India,North America,709,224303876
+Indonesia,Oceania,3588,1068246461
+Iran,Oceania,3799,1335346939
+Iraq,Europe,3458,329417062
+Ireland,South America,3292,808367205
+Israel,Europe,3630,1022065604
+Italy,Europe,729,1385189668
+Jamaica,Asia,2259,502074658
+Japan,Asia,3084,380688241
+Jordan,Africa,4209,697533504
+Kazakhstan,Europe,2220,1162917688
+Kenya,Europe,210,481646514
+Kiribati,North America,4778,93409363
+Kuwait,Africa,2738,652207936
+Kyrghyzstan,Asia,4049,1250805443
+Latvia,Europe,4354,768866979
+Lebanon,Europe,480,526429430
+Lesotho,South America,4649,751123997
+Liberia,South America,4170,39285428
+Thailand,North America,4749,750221249
+Liechtenstein,South America,4287,1030064879
+Lithuania,North America,2618,797137094
+Luxembourg,North America,447,5893403
+Malawi,North America,464,865095500
+Malaysia,South America,4211,459998116
+Maldives,Oceania,1052,854307367
+Mali,South America,3348,519462923
+Malta,Africa,3798,512459487
+Marshall Islands,Europe,2404,397806538
+Mauritania,North America,4152,974470241
+Mauritius,Oceania,1073,937210484
+Mexico,Europe,4042,1202212804
+Micronesia,South America,2990,69384833
+Monaco,Europe,1574,894002651
+Mongolia,Asia,2006,620746347
+Montenegro,Africa,377,1001608672
+Morocco,Europe,1335,683200668
+Mozambique,Oceania,4727,109335220
+Myanmar,Africa,3687,514514624
+Namibia,Asia,2180,518531346
+Turkey,Oceania,840,1295102434
+Nepal,Asia,2056,1431622248
+Netherlands,South America,3070,1309110814
+New Zealand,Europe,1678,544448287
+Nicaragua,Oceania,164,512441287
+Niger,North America,1546,271105535
+Nigeria,Africa,2972,389569248
+North Korea,Africa,421,713651717
+Macedonia,South America,4975,665505020
+Norway,North America,1855,272158309
+Oman,Oceania,3377,581759187
+Pakistan,Europe,2845,851889863
+Palau,Africa,3777,17340138
+Panama,Africa,4728,91703503
+Papua New Guinea,Oceania,1365,527970066
+Paraguay,Asia,3503,898826778
+Peru,South America,535,1235963584
+Philippines,Europe,837,882761294
+Poland,Asia,1381,794384139
+Portugal,Oceania,3248,40371626
+Qatar,Asia,956,113651385
+Romania,Asia,3059,1479230265
+Russia,Europe,2479,1388822242
+Rwanda,South America,3792,294251403
+Saint Kitts and Nevis,North America,412,112383730
+Saint Lucia,Asia,1955,864738288
+Saint Vincent and the Grenadines,South America,4545,258084394
+Samoa,North America,4576,315303169
+San Marino,Europe,2521,886548623
+Saudi Arabia,Oceania,279,1122900612
+Senegal,South America,944,198681437
+Serbia,Africa,609,17541751
+Seychelles Islands,Africa,3226,815071709
+Sierra Leone,Asia,17,1360152226
+Singapore,North America,3876,145875448
+Slovakia,North America,2956,465761383
+Slovenia,Oceania,2425,1470874754
+Solomon Islands,Africa,1910,219833072
+Somalia,Europe,3303,1301833500
+South Africa,Oceania,1835,516120387
+South Korea,Europe,392,556588433
+Sudan,Asia,2560,1078845213
+Spain,Oceania,4248,552285995
+Sri Lanka,Europe,4346,256843022
+Suriname,Europe,1586,383114923
+Sweden,Oceania,2482,1355399078
+Switzerland,Asia,2612,1072668161
+Syria,Oceania,1941,195720283
+Tajikistan,South America,712,1450377898
+Tanzania,North America,2481,734780765
+Timor-Leste,Oceania,129,1298087563
+Tonga,North America,4816,1444731033
+Trinidad and Tobago,Oceania,1344,292475563
+Tunisia,North America,1333,819203298
+Turkmenistan,Oceania,4382,1009446679
+Tuvalu,Europe,3754,647732282
+Uganda,South America,3973,706756966
+Ukraine,South America,3384,138537301
+United Arab Emirates,South America,2195,744377790
+United Kingdom,Europe,4875,1397358535
+United States of America,North America,1192,1049751538
+Uruguay,Asia,3009,933801062
+Uzbekistan,North America,1575,1418389425
+Vanuatu,Oceania,340,472988471
+Venezuela,Asia,1824,1318651673
+Vietnam,Africa,1057,589085120
+Yemen,Asia,3096,1145659336
+Zambia,South America,1017,870513863
+Zimbabwe,North America,92,957646762
+Colombia,North America,4694,1145646418
+USA United States of America,Asia,2533,483061870
+Lao People's Democratic Republic,Oceania,3998,287261988
+Libya,South America,4634,824809756
+Kosovo,Europe,4793,1174678145
+Togo,Asia,2620,1202180194
+Malásia,South America,1269,1119716753
+Komoren,Africa,797,1476698316
+كولومبيا,Africa,4032,1339897799
+Estonie,North America,1716,64034691
+Гватемала,Oceania,2442,748589357
+Inde,Europe,1145,184536450
+Letonia,North America,3775,1217286816
+Польша,Oceania,1220,1004080469
+Mexique,North America,4421,557920971
+Polônia,Asia,142,685413740
+Marrocos,South America,2755,993578221
+Турция,Oceania,4246,1137616382
+Saint-Vincent-et-les-Grenadines,South America,1919,505427887
+Saudi Arabien,Oceania,1417,348394719
+Südkorea,Asia,691,1307826123
+Bélgica,Africa,3243,355465537
+Turkménistan,North America,1617,932642458
+火鸡,Europe,4402,1139974096
+Jemen,Europe,839,248883176
