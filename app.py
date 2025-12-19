@@ -2,15 +2,16 @@ import streamlit as st
 import pickle
 import os
 import numpy as np
+import pandas as pd
 
 st.set_page_config(page_title="ML App", layout="centered")
 
-# ---------- AUTO FIND MODEL ----------
+# ----------- AUTO FIND MODEL -----------
 @st.cache_resource
 def load_model():
     root_dir = os.path.abspath(os.path.join(os.path.dirname(__file__), ".."))
-
     found_path = None
+
     for root, dirs, files in os.walk(root_dir):
         if "model.pkl" in files:
             found_path = os.path.join(root, "model.pkl")
@@ -28,7 +29,7 @@ def load_model():
 
 model = load_model()
 
-# ---------- UI ----------
+# ----------- UI -----------
 st.title("🤖 Prediction App")
 
 f1 = st.number_input("Feature 1")
@@ -37,14 +38,18 @@ f2 = st.number_input("Feature 2")
 if st.button("Predict"):
     result = model.predict([[f1, f2]])
     st.success(f"Prediction: {result[0]}")
-    import streamlit as st
-import pickle
-import pandas as pd
 
-st.title("Countries Clustered Data")
+# ----------- DATASET SECTION (NOT ON TOP) -----------
+st.write("---")
+st.subheader("📊 View Dataset (Optional)")
 
-with open("countries_clustered.pkl", "rb") as f:
-    data = pickle.load(f)
+if st.button("Show Clustered Countries Dataset"):
+    try:
+        with open("countries_clustered.pkl", "rb") as f:
+            data = pickle.load(f)
 
-st.success("PKL file loaded successfully ✅")
-st.dataframe(data)
+        st.success("PKL file loaded successfully ✅")
+        st.dataframe(data)
+
+    except:
+        st.error("❌ countries_clustered.pkl not found. Please upload it.")
