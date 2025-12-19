@@ -1,12 +1,12 @@
 import streamlit as st
 import pandas as pd
 from sklearn.preprocessing import StandardScaler
-from scipy.cluster.hierarchy import linkage, fcluster, dendrogram
+from scipy.cluster.hierarchy import linkage, fcluster
 
-st.set_page_config(page_title="Countries Hierarchical Clustering", layout="wide")
-st.title("🌍 Hierarchical Clustering of Countries")
+st.set_page_config(page_title="Countries Hierarchical Clustering", layout="centered")
+st.title("🌍 Hierarchical Clustering of Countries (No Plot)")
 
-st.write("This app performs hierarchical clustering on a default countries dataset.")
+st.write("This app performs hierarchical clustering on a default countries dataset without plotting dendrograms.")
 
 # ------------------- DEFAULT DATASET -------------------
 data = {
@@ -24,31 +24,4 @@ if st.button("📊 Show Dataset"):
     st.subheader("Default Countries Dataset")
     st.dataframe(df)
 
-# ------------------- CLUSTERING -------------------
-numeric_cols = df.select_dtypes(include='number').columns.tolist()
-X = df[numeric_cols]
-
-scaler = StandardScaler()
-X_scaled = scaler.fit_transform(X)
-
-Z = linkage(X_scaled, method='ward')
-
-# Dendrogram using matplotlib
-st.subheader("📈 Dendrogram")
-plt.figure(figsize=(10,5))
-dendrogram(Z, labels=df['Country'].values, leaf_rotation=90)
-st.pyplot(plt.gcf())
-
-
-# Number of clusters
-n_clusters = st.slider("Select number of clusters", 2, 10, 3)
-
-# Assign cluster labels
-df['Cluster'] = fcluster(Z, n_clusters, criterion='maxclust')
-
-st.subheader("📊 Clustered Countries")
-st.dataframe(df)
-
-# Download clustered CSV
-csv = df.to_csv(index=False).encode('utf-8')
-st.download_button("⬇️ Download Clustered CSV", data=csv, file_name="countries_clustered.csv", mime="text/csv")
+# ----------
