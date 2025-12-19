@@ -2,7 +2,6 @@ import streamlit as st
 import pandas as pd
 from sklearn.preprocessing import StandardScaler
 from scipy.cluster.hierarchy import linkage, fcluster, dendrogram
-import matplotlib.pyplot as plt
 
 st.set_page_config(page_title="Countries Hierarchical Clustering", layout="wide")
 st.title("🌍 Hierarchical Clustering of Countries")
@@ -39,7 +38,7 @@ st.subheader("📈 Dendrogram")
 plt.figure(figsize=(10,5))
 dendrogram(Z, labels=df['Country'].values, leaf_rotation=90)
 st.pyplot(plt.gcf())
-plt.clf()
+
 
 # Number of clusters
 n_clusters = st.slider("Select number of clusters", 2, 10, 3)
