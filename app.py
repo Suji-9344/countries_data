@@ -7,49 +7,49 @@ import plotly.figure_factory as ff
 st.set_page_config(page_title="Countries Hierarchical Clustering", layout="wide")
 st.title("🌍 Hierarchical Clustering of Countries")
 
-st.write("Upload a CSV with numeric features (e.g., GDP, Population, HDI). Column 'Country' is optional for labels.")
+st.write("This app performs hierarchical clustering on a default countries dataset.")
 
-# Upload CSV
-uploaded_file = st.file_uploader("Upload CSV", type=["csv"])
+# ------------------- DEFAULT DATASET -------------------
+data = {
+    "Country": ["India", "USA", "China", "UK", "Japan", "Germany", "Brazil", "Australia", "Canada", "Russia"],
+    "GDP": [2200, 65000, 12000, 43000, 42000, 46000, 9000, 54000, 48000, 11000],
+    "LifeExpectancy": [70.8, 79.1, 76.5, 80.5, 84.6, 81.2, 75.5, 82.8, 82.3, 72.6],
+    "Population": [1400000000, 331000000, 1440000000, 68000000, 125000000, 83000000, 212000000, 25000000, 38000000, 146000000],
+    "HDI": [0.63, 0.92, 0.74, 0.90, 0.91, 0.94, 0.76, 0.94, 0.93, 0.82]
+}
 
-if uploaded_file is not None:
-    df = pd.read_csv(uploaded_file)
-    st.success("✅ CSV file loaded successfully!")
-    
-    # Preview dataset
-    with st.expander("📊 Preview Dataset"):
-        st.dataframe(df.head())
+df = pd.DataFrame(data)
 
-    # Identify numeric columns
-    numeric_cols = df.select_dtypes(include='number').columns.tolist()
-    if len(numeric_cols) < 1:
-        st.error("❌ No numeric columns found for clustering!")
-    else:
-        st.write(f"Using numeric columns: {numeric_cols}")
-        X = df[numeric_cols]
+# ------------------- SHOW DATASET ON DEMAND -------------------
+if st.button("📊 Show Dataset"):
+    st.subheader("Default Countries Dataset")
+    st.dataframe(df)
 
-        # Scale features
-        scaler = StandardScaler()
-        X_scaled = scaler.fit_transform(X)
+# ------------------- CLUSTERING -------------------
+numeric_cols = df.select_dtypes(include='number').columns.tolist()
+X = df[numeric_cols]
 
-        # Perform hierarchical clustering
-        Z = linkage(X_scaled, method='ward')
+scaler = StandardScaler()
+X_scaled = scaler.fit_transform(X)
 
-        # Plot dendrogram with Plotly
-        st.subheader("📈 Dendrogram")
-        labels = df['Country'].tolist() if 'Country' in df.columns else None
-        fig = ff.create_dendrogram(X_scaled, labels=labels, orientation='top', linkagefun=lambda x: Z)
-        fig.update_layout(width=900, height=500)
-        st.plotly_chart(fig)
+Z = linkage(X_scaled, method='ward')
 
-        # Choose number of clusters
-        n_clusters = st.slider("Select number of clusters", 2, 10, 3)
+# Dendrogram
+st.subheader("📈 Dendrogram")
+labels = df['Country'].tolist()
+fig = ff.create_dendrogram(X_scaled, labels=labels, orientation='top', linkagefun=lambda x: Z)
+fig.update_layout(width=900, height=500)
+st.plotly_chart(fig)
 
-        # Assign cluster labels
-        df['Cluster'] = fcluster(Z, n_clusters, criterion='maxclust')
-        st.subheader("📊 Clustered Countries")
-        st.dataframe(df)
+# Number of clusters
+n_clusters = st.slider("Select number of clusters", 2, 10, 3)
 
-        # Download option
-        csv = df.to_csv(index=False).encode('utf-8')
-        st.download_button("⬇️ Download Clustered CSV", data=csv, file_name="countries_clustered.csv", mime="text/csv")
+# Assign cluster labels
+df['Cluster'] = fcluster(Z, n_clusters, criterion='maxclust')
+
+st.subheader("📊 Clustered Countries")
+st.dataframe(df)
+
+# Download clustered CSV
+csv = df.to_csv(index=False).encode('utf-8')
+st.download_button("⬇️ Download Clustered CSV", data=csv, file_name="countries_clustered.csv", mime="text/csv")
